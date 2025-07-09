@@ -1,10 +1,10 @@
 ---
 layout: page
 title:  "关于我"
-categories: jekyll update
-permalink: /about/
+categories: 自我介绍
+permalink: /about_me/
 ---
-你好，我是 xskxsjwjz，一名来自上海交通大学的学生。
+你好，我是 蓝色夏威夷，一名上海交通大学学生。
 
 我热爱编程，喜欢探索新技术，尤其对人工智能和数据科学充满兴趣。这个博客是我的个人技术笔记和生活分享空间。
 

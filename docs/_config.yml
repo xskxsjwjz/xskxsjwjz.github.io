@@ -21,7 +21,7 @@
 title: 蓝色夏威夷的私有地
 email: xskxsjwjz@sjtu.edu.cn
 description: >- # this means to ignore newlines until "baseurl:"
-  这里是蓝色夏威夷，一个苦逼SJTU在校生。平时会在这里发发牢骚写写代码，记录自己成长，虽然零人在意。
+  
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 # twitter_username: jekyllrb
@@ -31,7 +31,7 @@ github_username:  xskxsjwjz
 theme: minima
 plugins:
   - jekyll-feed
-
+  - jekyll-last-modified-at
 # Exclude from processing.
 # The following items will not be processed, by default.
 # Any item listed under the `exclude:` key here will be automatically added to
