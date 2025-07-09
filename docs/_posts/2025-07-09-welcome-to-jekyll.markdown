@@ -1,29 +1,22 @@
 ---
-layout: post
-title:  "Welcome to Jekyll!"
-date:   2025-07-09 23:58:36 +0800
+layout: page
+title:  "关于我"
 categories: jekyll update
+permalink: /about/
 ---
-You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run `jekyll serve`, which launches a web server and auto-regenerates your site when a file is updated.
+你好，我是 xskxsjwjz，一名来自上海交通大学的学生。
 
-Jekyll requires blog post files to be named according to the following format:
+我热爱编程，喜欢探索新技术，尤其对人工智能和数据科学充满兴趣。这个博客是我的个人技术笔记和生活分享空间。
 
-`YEAR-MONTH-DAY-title.MARKUP`
+## 我的技能
 
-Where `YEAR` is a four-digit number, `MONTH` and `DAY` are both two-digit numbers, and `MARKUP` is the file extension representing the format used in the file. After that, include the necessary front matter. Take a look at the source for this post to get an idea about how it works.
+* Python
+* Git & GitHub (版本控制)
+* Linux (日常使用)
 
-Jekyll also offers powerful support for code snippets:
+## 联系方式
 
-{% highlight ruby %}
-def print_hi(name)
-  puts "Hi, #{name}"
-end
-print_hi('Tom')
-#=> prints 'Hi, Tom' to STDOUT.
-{% endhighlight %}
+* Email: xskxsjwjz@sjtu.edu.cn
+* GitHub: [xskxsjwjz](https://github.com/xskxsjwjz)
 
-Check out the [Jekyll docs][jekyll-docs] for more info on how to get the most out of Jekyll. File all bugs/feature requests at [Jekyll’s GitHub repo][jekyll-gh]. If you have questions, you can ask them on [Jekyll Talk][jekyll-talk].
-
-[jekyll-docs]: https://jekyllrb.com/docs/home
-[jekyll-gh]:   https://github.com/jekyll/jekyll
-[jekyll-talk]: https://talk.jekyllrb.com/
+希望在这里与大家交流学习！
