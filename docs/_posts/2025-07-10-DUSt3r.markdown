@@ -1,0 +1,29 @@
+---
+layout: page
+title:  "DUSt3r环境的配置与安装"
+categories: 三维重建
+permalink: /dust3r/
+---
+最近在实验室里跟着学长搞三维重建，在dust3r上踩了些坑，也希望写下来给自己积累经验。
+
+首先是dust3r官方的github仓库：“https://github.com/naver/dust3r”
+
+进去以后，跟随README的指引把库拷下来：  
+```bash
+git clone --recursive https://github.com/naver/dust3r
+cd dust3r
+```
+
+接下来创建一个conda环境（Anaconda和miniconda应该都可以）：
+```bash
+conda create -n dust3r python=3.11 cmake=3.14.0
+conda activate dust3r 
+conda install pytorch torchvision pytorch-cuda=12.1 -c pytorch -c nvidia  # use the correct version of cuda for your system
+pip install -r requirements.txt
+# Optional: you can also install additional packages to:
+# - add support for HEIC images
+# - add pyrender, used to render depthmap in some datasets preprocessing
+# - add required packages for visloc.py
+pip install -r requirements_optional.txt
+```
+这里注意要安装正确的cuda版本，可以用`nvidia-smi`大概看看适合的版本；
