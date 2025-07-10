@@ -21,17 +21,25 @@
 title: 蓝色夏威夷的私有地
 email: xskxsjwjz@sjtu.edu.cn
 description: >- # this means to ignore newlines until "baseurl:"
-  
+  网站还在逐步建设，可能有诸多问题。
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://xskxsjwjz/github.io" # the base hostname & protocol for your site, e.g. http://example.com
 # twitter_username: jekyllrb
 github_username:  xskxsjwjz
+
+lang : zh-CN
+
+author :
+  name: 蓝色夏威夷
+  url: https://xskxsjwjz.github.io
+  github: xskxsjwjz
 
 # Build settings
 theme: minima
 plugins:
   - jekyll-feed
   - jekyll-last-modified-at
+
 # Exclude from processing.
 # The following items will not be processed, by default.
 # Any item listed under the `exclude:` key here will be automatically added to
@@ -40,14 +48,20 @@ plugins:
 # Excluded items can be processed by explicitly listing the directories or
 # their entries' file path in the `include:` list.
 #
-# exclude:
-#   - .sass-cache/
-#   - .jekyll-cache/
-#   - gemfiles/
-#   - Gemfile
-#   - Gemfile.lock
-#   - node_modules/
-#   - vendor/bundle/
-#   - vendor/cache/
-#   - vendor/gems/
-#   - vendor/ruby/
+exclude:
+  - .sass-cache/
+  - .jekyll-cache/
+  - gemfiles/
+  - Gemfile
+  - Gemfile.lock
+  - node_modules/
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+
+minima:
+  date_format: "%Y年%m月%d日" # 为 Minima 主题自定义日期格式
+  # social_links:
+  #   github: xskxsjwjz # 如果你希望 Minima 主题显示社交链接
+  #   twitter: your_twitter_handle
