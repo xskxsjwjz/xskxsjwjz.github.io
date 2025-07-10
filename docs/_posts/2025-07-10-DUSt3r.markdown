@@ -4,9 +4,11 @@ title:  "DUSt3r环境的配置与安装"
 categories: 三维重建
 permalink: /dust3r/
 ---
-最近在实验室里跟着学长搞三维重建，在dust3r上踩了些坑，也希望写下来给自己积累经验。
+最近在实验室里跟着学长搞三维重建，在 dust3r 上踩了些坑，也希望写下来给自己积累经验。
 
-首先是dust3r官方的github仓库：“https://github.com/naver/dust3r”
+首先是 dust3r 官方的 github 仓库：“https://github.com/naver/dust3r”
+
+# 必选部分
 
 进去以后，跟随README的指引把库拷下来：  
 ```bash
@@ -14,16 +16,63 @@ git clone --recursive https://github.com/naver/dust3r
 cd dust3r
 ```
 
-接下来创建一个conda环境（Anaconda和miniconda应该都可以）：
+接下来创建一个 conda 环境（ Anaconda 和 miniconda 应该都可以）：
 ```bash
 conda create -n dust3r python=3.11 cmake=3.14.0
 conda activate dust3r 
 conda install pytorch torchvision pytorch-cuda=12.1 -c pytorch -c nvidia  # use the correct version of cuda for your system
 pip install -r requirements.txt
+```
+
+# 可选部分
+
+```bash
 # Optional: you can also install additional packages to:
 # - add support for HEIC images
 # - add pyrender, used to render depthmap in some datasets preprocessing
 # - add required packages for visloc.py
 pip install -r requirements_optional.txt
 ```
-这里注意要安装正确的cuda版本，可以用`nvidia-smi`大概看看适合的版本；
+这里注意要安装正确的cuda版本，可以用 `nvidia-smi` 大概看看适合的版本，笔者使用的是cuda12.0；
+
+可选包的作用：
+1. 支持 HEIC 图像；
+1. 在某些数据集的预处理中渲染深度图；
+1. 用于 `visloc.py` ；
+
+接下来也是可选部分：为 RoPE 编译 cuda 内核来加快其在 GPU 上的运行。
+```bash
+# DUST3R relies on RoPE positional embeddings for which you can compile some cuda kernels for faster runtime.
+cd croco/models/curope/
+python setup.py build_ext --inplace
+cd ../../../
+```
+
+# Checkpoints
+
+naver 实验室给出了几个经过预训练的模型：可以直接下载。
+| Modelname   | Training resolutions | Head | Encoder | Decoder |
+|-------------|----------------------|------|---------|---------|
+| [`DUSt3R_ViTLarge_BaseDecoder_224_linear.pth`](https://download.europe.naverlabs.com/ComputerVision/DUSt3R/DUSt3R_ViTLarge_BaseDecoder_224_linear.pth) | 224x224 | Linear | ViT-L | ViT-B |
+| [`DUSt3R_ViTLarge_BaseDecoder_512_linear.pth`](https://download.europe.naverlabs.com/ComputerVision/DUSt3R/DUSt3R_ViTLarge_BaseDecoder_512_linear.pth)   | 512x384, 512x336, 512x288, 512x256, 512x160 | Linear | ViT-L | ViT-B |
+| [`DUSt3R_ViTLarge_BaseDecoder_512_dpt.pth`](https://download.europe.naverlabs.com/ComputerVision/DUSt3R/DUSt3R_ViTLarge_BaseDecoder_512_dpt.pth) | 512x384, 512x336, 512x288, 512x256, 512x160 | DPT | ViT-L | ViT-B |
+
+也可以在这里直接下载 checkpoints：
+```bash
+mkdir -p checkpoints/
+wget https://download.europe.naverlabs.com/ComputerVision/DUSt3R/DUSt3R_ViTLarge_BaseDecoder_512_dpt.pth -P checkpoints/
+```
+
+# Demo
+
+到现在为止，我们已经安装好 dust3r 的基本框架了，接下来可以跑它的 `demo.py` 来测试我们的安装：（记得指定模型，否则会报错）
+```bash
+python3 demo.py --model_name DUSt3R_ViTLarge_BaseDecoder_512_dpt
+# --weights 用于指定 checkpoints
+# --image_size 用于指定分辨率（ 512或224 ）
+# --local_network,--server_name 用于指定在本地服务器或者某个服务器上运行代码
+# --server_port 用于指定服务器端口
+# --device 用于指定设备（ cpu 或者 cuda ）
+```
+
+如果顺利的话，可以看到以下输出：
